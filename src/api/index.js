@@ -1,16 +1,26 @@
-const apiKey = "10fbd4d9f27240d08fe3f276f9de2d98"; // Replace with your API Key
+const apiKey = process.env.REACT_APP_SPOONACULAR_API_KEY; // Load API key from environment variables
+const baseUrl = "https://api.spoonacular.com/recipes";
 
 export const getRecipesByIngredients = async (ingredients) => {
   try {
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(
-      ingredients
-    )}&number=6&apiKey=${apiKey}`;
-
+    const url = `${baseUrl}/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=6&apiKey=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
-    return data;
+    return response.ok ? data : [];
   } catch (error) {
-    console.error("Error fetching recipes:", error);
+    console.error("Error fetching recipes by ingredients:", error);
+    return [];
+  }
+};
+
+export const getRecipesByNutrition = async (minCalories, maxCalories) => {
+  try {
+    const url = `${baseUrl}/findByNutrients?minCalories=${minCalories}&maxCalories=${maxCalories}&number=10&apiKey=${apiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return response.ok ? data : [];
+  } catch (error) {
+    console.error("Error fetching recipes by nutrition:", error);
     return [];
   }
 };
