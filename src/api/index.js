@@ -1,4 +1,4 @@
-const apiKey = process.env.REACT_APP_SPOONACULAR_API_KEY; // Load API key from environment variables
+const apiKey = import.meta.env.VITE_REACT_APP_SPOONACULAR_API_KEY;  // Load API key from environment variables
 const baseUrl = "https://api.spoonacular.com/recipes";
 
 export const getRecipesByIngredients = async (ingredients) => {
