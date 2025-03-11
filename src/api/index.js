@@ -1,4 +1,4 @@
-const apiKey = "00b5bfb82a2842a2be851e7c1994b729"; // Replace with your API Key
+const apiKey = "10fbd4d9f27240d08fe3f276f9de2d98"; // Replace with your API Key
 
 export const getRecipesByIngredients = async (ingredients) => {
   try {
