@@ -3,7 +3,7 @@ const baseUrl = "https://api.spoonacular.com/recipes";
 
 export const getRecipesByIngredients = async (ingredients) => {
   try {
-    const url = `${baseUrl}/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=6&apiKey=${apiKey}`;
+    const url = `${baseUrl}/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=12&apiKey=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
     return response.ok ? data : [];
@@ -15,7 +15,7 @@ export const getRecipesByIngredients = async (ingredients) => {
 
 export const getRecipesByNutrition = async (minCalories, maxCalories) => {
   try {
-    const url = `${baseUrl}/findByNutrients?minCalories=${minCalories}&maxCalories=${maxCalories}&number=10&apiKey=${apiKey}`;
+    const url = `${baseUrl}/findByNutrients?minCalories=${minCalories}&maxCalories=${maxCalories}&number=12&apiKey=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
     return response.ok ? data : [];
